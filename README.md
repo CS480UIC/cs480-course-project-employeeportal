@@ -6,7 +6,8 @@ cs480-course-project-employeeprotal created by GitHub Classroom
 1. [Database](#database)
 2. [Author(s)](#author)
 3. [Database description](#description)
- 
+
+cloned! 
 # Database
 Employee Portal
 # Author(s)
