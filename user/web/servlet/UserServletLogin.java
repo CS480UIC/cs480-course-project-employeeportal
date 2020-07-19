@@ -52,6 +52,20 @@ public class UserServletLogin extends HttpServlet {
 		{
 		System.out.println("done");
 		}
+		
+		
+		if(request.getParameter("updateworker")!=null)
+		{
+			response.sendRedirect( request.getContextPath() + "/jsps/updateaccount.jsp");
+			
+		}
+		
+		
+		if(request.getParameter("updatecreq")!=null)
+		{
+			response.sendRedirect( request.getContextPath() + "/jsps/updateclientaccount.jsp");
+			
+		}
 //		User user = null;
 //		try {
 //			user = userdao.findByUsername(request.getParameter("username"));

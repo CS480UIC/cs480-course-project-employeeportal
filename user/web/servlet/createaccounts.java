@@ -42,7 +42,7 @@ public class createaccounts extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		User user = null;
 		UserService userservice = new UserService();
 		Map<String,String[]> paramMap = request.getParameterMap();//(return the object of map)
 		User form = new User();
@@ -64,8 +64,9 @@ public class createaccounts extends HttpServlet {
 
 			{
 				userservice.regist(form);
-				System.out.println("Registered successfully");
-				request.getRequestDispatcher("/jsps/clientinfo.jsp").forward(request,response);
+				request.getSession().setAttribute("session_user", user);
+
+				response.sendRedirect( request.getContextPath() + "/jsps/clientinfo.jsp");
 			}
 		}
 		catch(Exception e)

@@ -1,7 +1,9 @@
 package user.web.servlet;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -53,29 +55,23 @@ public class clientdata extends HttpServlet {
 			
 			String[] values = paramMap.get(name);
 			info.add(values[0]);
+			System.out.println(name + ": " + Arrays.toString(values));
 		}
-		form.setemail(info.get(0));
-		form.setCompany(info.get(1));
-		form.setBackground(info.get(2));		
-		form.setRequiredWorkertype(info.get(3));
-		form.setSalaryafforded(info.get(4));
-		form.setNoofdays(info.get(5));
-		form.setWorkload(info.get(6));
+		form.setemail(info.get(1));
+		form.setCompany(info.get(2));
+		form.setBackground(info.get(3));		
+		form.setRequiredWorkertype(info.get(4));
+		form.setSalaryafforded(info.get(5));
+		form.setNoofdays(info.get(6));
+		form.setWorkload(info.get(7));
 			try {
 				if(user.add_client_details(form)==1)
 				{
 					request.getRequestDispatcher("/jsps/main.jsp").forward(request, response);
 				}
 				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
+			e.getStackTrace();
 			}
 					
 		doGet(request, response);

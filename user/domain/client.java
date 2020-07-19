@@ -23,7 +23,7 @@ public class client {
 		return email;
 	}
 	public void setemail(String email) {
-		email = email;
+		this.email = email;
 	}
 	public String getCompany() {
 		return company;

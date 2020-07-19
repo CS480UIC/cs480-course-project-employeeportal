@@ -1,4 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+</style>
+</head>
+<body>
+
+<h2>Colored Button Borders</h2>
+<p>Use the border property to add a border to the button:</p>
+
+<button class="button button1">Green</button>
+<button class="button button2">Blue</button>
+<button class="button button3">Red</button>
+<button class="button button4">Gray</button>
+<button class="button button5">Black</button>
+
+</body>
+</html>
+ --%>
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -35,75 +99,18 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 			
-			<form action="<c:url value='/clientdata'/>" method="post">    
-			
+			<form action="<c:url value='/UserServletLogin'/>" method="post">    
 			<form  class="login100-form validate-form">
 					<span class="login100-form-title">
-						Client SignUp
+						Update account
 					</span>
-				<div class="wrap-input100 validate-input">
-						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="email" placeholder="Re-enter your email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input">
-						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="name" placeholder="Company Name">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" >
-						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="background" placeholder="Background">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="pass" placeholder="RequiredWorkerType">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="salaryAfforded" placeholder="salaryafforded">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="noofdays" placeholder="no.ofdays">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="workload" placeholder="Workload">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-							
 					
 					<div class="container-login100-form-btn">
-						<Input type="submit"  value = "Signup" class="login100-form-btn" name="done">
+					<!-- <!-- 	<Input type="submit"  value = "UpdateClientEmail" class="login100-form-btn" name="updateclient">
+					</Input>-->
+					 <Input type="submit"  value = "Updateclientemail" class="login100-form-btn" name="updatecreq">
+					</Input> 
+					<Input type="submit"  value = "updateworkerskills"  class="login100-form-btn" name="updateworker">
 					</Input>
 					</div>
 					
@@ -138,3 +145,4 @@
 
 </html>
 
+ 

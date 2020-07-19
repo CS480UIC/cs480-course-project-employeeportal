@@ -73,42 +73,45 @@ public class UserDao {
 	
 	
 	public User deleteByUsername(User form) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+//working properly for client 
+		//so at this point we are done 
+		//1-) Inserting, deleting in both our second and third entity 
+		// 2-) also done inserting, deleting, reading our first entity
 		User user = new User();
 		try {
-			
+			//this is basically deletion of client
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/employeeportal","root","Oolong123!@#");
-				String email = form.getEmail();
-			String sql2 = "SELECT Email from clientcredentials Where ClientLoginID=? AND ClientPassword=?";	
+			
+			String email = form.getEmail();
+			String sql2 = "SELECT * from clientcredentials Where ClientloginID=? AND Clientpassword=?";	
 	    	PreparedStatement pstmt1 = connect.prepareStatement(sql2);
 
 			pstmt1.setString(1,form.getUsername());
 	    	pstmt1.setString(2,form.getPassword());		
 	    	ResultSet resultSet = pstmt1.executeQuery();
-	    	String clients_id = resultSet.getString("ClientLoginID");
-	    	String pass =  resultSet.getString("ClientPassword");
-	    	String the_id="";
+//	    	String clients_id = resultSet.getString("ClientloginID");
+	    	String the_id= "";
 	    	while(resultSet.next())
 	    	{
+	    		//doing this so that i can delete the related data from other entities
 	    	
-	    		if(clients_id.equals(form.getUsername())&& pass.equals(form.getPassword()))
-	    		{
-	    			user.setEmail("Email");			
-	    		}
+	    			user.setEmail(resultSet.getString("Email"));			
+
 	    	}
 	    	//once you get the clientlogin ID
-		    String sql = "DELETE FROM clientcredentials where ClientLoginID=? AND ClientPassword=?" ;
+				////////////this is deleting from entity 1///////
+		    String sql = "DELETE  FROM clientcredentials where ClientloginID=? AND Clientpassword=?" ;
 		    //ResultSet resultSet  = preparestatement.executeUpdate();
 		    	PreparedStatement pstmt = connect.prepareStatement(sql);
 		    	pstmt.setString(1,form.getUsername());
 		    	pstmt.setString(2,form.getPassword());		    	
 		    	pstmt.executeUpdate();
-		    	
-			String sql1 = "DELETE FROM clients where ClientID=?" ;
+		    	///////////////////////
+			String sql1 = "DELETE FROM clients where Email=?" ;
 			PreparedStatement pstmt2 = connect.prepareStatement(sql1);
 				pstmt2.setString(1,user.getEmail() );
-				
 		    	pstmt2.executeUpdate();
 
 		    	System.out.println("deleted");
@@ -156,27 +159,44 @@ public class UserDao {
 	
 	public User delete_worker(User form) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		User user = new User();
+		//this one is to delete workers
 		try {
-			
+			//this is basically deletion of client
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/employeeportal","root","Oolong123!@#");
 			
-		    String sql = "select * from clientcredentials where ClientLoginID=?";
-		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
-		    System.out.println(form.getUsername());
-		    preparestatement.setString(1,form.getUsername());		
-		    
-		    ResultSet resultSet = preparestatement.executeQuery();
+			String email = form.getEmail();
+			String sql2 = "SELECT * from workercredentials Where WorkerLoginID=? AND WorkerPassword=?";	
+	    	PreparedStatement pstmt1 = connect.prepareStatement(sql2);
+
+			pstmt1.setString(1,form.getUsername());
+	    	pstmt1.setString(2,form.getPassword());		
+	    	ResultSet resultSet = pstmt1.executeQuery();
+	    	String the_id= "";
+	    	while(resultSet.next())
+	    	{
+	    		//doing this so that i can delete the related data from other entities
+	    	
+	    			user.setEmail(resultSet.getString("Email"));			
+
+	    	}
+	    	//once you get the clientlogin ID
+				////////////this is deleting from entity 1///////
+		    String sql = "DELETE  FROM workercredentials where WorkerLoginID=? AND WorkerPassword=?" ;
 		    //ResultSet resultSet  = preparestatement.executeUpdate();
-		    while(resultSet.next()){
-		    	String user_name = resultSet.getString("ClientLoginID");   	
-		    	if(user_name.equals(form.getUsername())){
-		    		user.setUsername(resultSet.getString("ClientLoginID"));
-		    		user.setPassword(resultSet.getString("ClientPassword"));
-		    		 		
-		    	}
-		    }
+		    	PreparedStatement pstmt = connect.prepareStatement(sql);
+		    	pstmt.setString(1,form.getUsername());
+		    	pstmt.setString(2,form.getPassword());		    	
+		    	pstmt.executeUpdate();
+		    	///////////////////////
+			String sql1 = "DELETE FROM workers where Email=?" ;
+			PreparedStatement pstmt2 = connect.prepareStatement(sql1);
+				pstmt2.setString(1,user.getEmail() );
+		    	pstmt2.executeUpdate();
+
+		    	System.out.println("deleted");
+
 		
 		    
 		} catch(SQLException e) {
@@ -232,8 +252,7 @@ public class UserDao {
 		    preparestatement.setString(5,client.getSalaryafforded());
 		    preparestatement.setString(6,client.getNoofdays());
 		    preparestatement.setString(7,client.getWorkload());
-
-		    
+System.out.println("printing"+ client.getemail());
 		    preparestatement.executeUpdate();
 	
 		} catch(SQLException e) {
@@ -271,10 +290,13 @@ public class UserDao {
 			          .getConnection("jdbc:mysql://localhost:3306/employeeportal","root","Oolong123!@#");		
 			
 			
-			String sql = "insert into clients values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into workers values(?,?,?,?,?,?,?,?)";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
-		    preparestatement.setString(1,Integer.toString(clientid));
-		    preparestatement.setString(2,worker.getName());
+			 Random rand = new Random();
+				int rand1 = rand.nextInt(1000); 
+		        clientid = rand1;
+			preparestatement.setString(1, Integer.toString(rand1));
+			preparestatement.setString(2,worker.getName());
 		    preparestatement.setString(3,Integer.toString(worker.getAge()));
 		    preparestatement.setString(4,worker.getEmail());
 		    preparestatement.setString(5,worker.getWorkerType());
@@ -282,8 +304,56 @@ public class UserDao {
 		    preparestatement.setString(7,worker.getSalaryRange());
 		    preparestatement.setString(8,Integer.toString(worker.getReviews()));
 		    
-		    
 		    preparestatement.executeUpdate();
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public void update_worker_details(worker worker) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/employeeportal","root","Oolong123!@#");		
+			
+			
+			String sql = "update workers set SalaryRange = ? where Email = ?";
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+		    preparestatement.setString(1,worker.getSalaryRange());
+		    preparestatement.setString(2,worker.getEmail());   
+		    preparestatement.executeUpdate();
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+
+	public void update_client_requirement(client worker) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		try {
+			//okay here i'm updating two entities at the same time
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/employeeportal","root","Oolong123!@#");		
+			
+			
+			String sql = "update clients set Email = ? where Email = ?";	
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+		    String store_prevemail = worker.getemail();
+			String store_newemail = worker.getCompany();
+		    preparestatement.setString(1,worker.getemail());
+		    preparestatement.setString(2,worker.getCompany());
+		    preparestatement.executeUpdate();
+
+
+			String sql1 = "update clientcredentials set Email = ? where Email = ?";	
+			PreparedStatement preparestatement1 = connect.prepareStatement(sql1); 
+
+			preparestatement1.setString(1,worker.getemail());
+			    preparestatement1.setString(2,worker.getCompany());
+			    preparestatement1.executeUpdate();
+
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		}

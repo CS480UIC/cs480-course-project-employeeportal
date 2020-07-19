@@ -35,24 +35,15 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 			
-			<form action="<c:url value='/clientdata'/>" method="post">    
-			
+			<form action="<c:url value='/updateaccounts'/>" method="post">    
 			<form  class="login100-form validate-form">
 					<span class="login100-form-title">
-						Client SignUp
+						You can only update Salary-Range
 					</span>
-				<div class="wrap-input100 validate-input">
-						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="email" placeholder="Re-enter your email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
 					
 					<div class="wrap-input100 validate-input">
 						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="name" placeholder="Company Name">
+						<input class="input100" type="text" name="name" placeholder="Salaryrange">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -61,43 +52,10 @@
 					
 					<div class="wrap-input100 validate-input" >
 						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="background" placeholder="Background">
+						<input class="input100" type="text" name="background" placeholder="email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="pass" placeholder="RequiredWorkerType">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="salaryAfforded" placeholder="salaryafforded">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="noofdays" placeholder="no.ofdays">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="workload" placeholder="Workload">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 							

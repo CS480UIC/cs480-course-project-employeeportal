@@ -2,6 +2,7 @@ package user.web.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,19 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import user.dao.UserDao;
 import user.domain.client;
-import user.domain.worker;
 
 /**
- * Servlet implementation class workerdata
+ * Servlet implementation class updateclientacc
  */
-
-public class workerdata extends HttpServlet {
+public class updateclientacc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public workerdata() {
+    public updateclientacc() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,7 +46,7 @@ public class workerdata extends HttpServlet {
 		
 		UserDao user = new UserDao();
 		Map<String,String[]> paramMap = request.getParameterMap();//(return the object of map)
-		worker form = new worker();
+		client form = new client();
 		List<String> info = new ArrayList<String>();
 		
 		for(String name : paramMap.keySet()) { //keyset contains the keys of specified map here paramMap (which is taking input from
@@ -55,18 +54,13 @@ public class workerdata extends HttpServlet {
 			
 			String[] values = paramMap.get(name);
 			info.add(values[0]);
+			System.out.println(name + ": " + Arrays.toString(values));
 		}
-		
-		form.setName(info.get(1));
-		form.setAge(Integer.parseInt(info.get(2)));
-		form.setEmail(info.get(3));
-		form.setWorkerType(info.get(4));
-		form.setSkill(info.get(5));
-		form.setSalaryRange(info.get(6));
-		form.setReviews(Integer.parseInt(info.get(7)));
-		
+		form.setemail(info.get(2));
+		form.setCompany(info.get(1));
+
 		try {
-			user.add_worker_details(form);
+			user.update_client_requirement(form);
 			request.getRequestDispatcher("/jsps/main.jsp").forward(request, response);
 		
 		} catch (ClassNotFoundException e) {
@@ -79,6 +73,7 @@ public class workerdata extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		doGet(request, response);
 	}
 

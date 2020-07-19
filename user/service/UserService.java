@@ -91,7 +91,7 @@ public class UserService {
 		}
 		else if(userDao.findByUsername_worker(form)!=null)
 		{
-			
+			userDao.delete_worker(form);
 		}
 		else
 		{

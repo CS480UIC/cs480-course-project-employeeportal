@@ -2,6 +2,7 @@ package user.web.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,20 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import user.dao.UserDao;
-import user.domain.User;
-import user.service.UserException;
-import user.service.UserService;
+import user.domain.worker;
 
 /**
- * Servlet implementation class createworkeraccount
+ * Servlet implementation class updateaccounts
  */
-public class createworkeraccount extends HttpServlet {
+public class updateaccounts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public createworkeraccount() {
+    public updateaccounts() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,27 +42,29 @@ public class createworkeraccount extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		UserDao user = new UserDao();
-		UserService userservice = new UserService();
-		User form = new User();
-		Map<String,String[]> paramMap= request.getParameterMap();
-		ArrayList<String> info = new ArrayList<String>();
-		for(String name : paramMap.keySet())
-		{
-			String values[] = paramMap.get(name);
-			info.add(values[0]);
-		}
-		form.setUsername(info.get(1));
-		form.setPassword(info.get(3));
-		form.setEmail(info.get(2));
-		
-		if(form.getUsername()!=null)
-		{
+			
+
+
+			UserDao user = new UserDao();
+			Map<String,String[]> paramMap = request.getParameterMap();//(return the object of map)
+			worker form = new worker();
+			List<String> info = new ArrayList<String>();
+			
+			for(String name : paramMap.keySet()) { //keyset contains the keys of specified map here paramMap (which is taking input from
+				//our createclientaccount so its column name is our key and value will paramMap.keyset)
+				
+				String[] values = paramMap.get(name);
+				info.add(values[0]);
+			}
+
+			form.setSalaryRange(info.get(1));
+			form.setEmail(info.get(2));
+
+
 			try {
-				userservice.regist1(form);
-				response.sendRedirect( request.getContextPath() + "/jsps/workerinfo.jsp");
-
-
+				user.update_worker_details(form);
+				request.getRequestDispatcher("/jsps/main.jsp").forward(request, response);
+			
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,14 +74,20 @@ public class createworkeraccount extends HttpServlet {
 			} catch (IllegalAccessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (UserException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			
-		}
-		
+	
+//		if (request.getParameter("updatecreq")!=null)
+//		{
+//			response.sendRedirect( request.getContextPath() + "/jsps/clientinfo.jsp");
+//
+//		}
+//		
+//		if(request.getParameter("updateclient")!=null)
+//		{
+//			response.sendRedirect( request.getContextPath() + "/jsps/createclientaccount.jsp");
+//			
+//		}
 		doGet(request, response);
-	}
-
+	
+}
 }
