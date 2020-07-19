@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Client-Signup</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -34,14 +34,23 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 			
-			<form action="<c:url value='/CreateDatabase'/>" method="post">    
+			<form action="<c:url value='/deleteaccount'/>" method="post">    
 			
 				<form  class="login100-form validate-form">
 					<span class="login100-form-title">
-						Member Login
+						Delete Account
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input">
+						<input type="hidden" name="method"/>					
+						<input class="input100" type="text" name="name" placeholder="Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex">
 						<input type="hidden" name="method"/>					
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
@@ -59,29 +68,12 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<Input type="submit"  value = "Login" class="login100-form-btn" name="done">
+						<Input type="submit"  value = "Signup" class="login100-form-btn" name="done">
 							</Input>
 					</div>
 
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="createclientaccount.jsp">
-							Create your Account As Client
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a><br>
-						<a class="txt2" href="createworkaccount.jsp">
-							Create your Account As Worker
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
+					
+				
 					
 							
 					</div>

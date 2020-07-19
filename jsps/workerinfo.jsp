@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>ClientInfo</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -34,53 +34,76 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 			
-			<form action="<c:url value='/CreateDatabase'/>" method="post">    
+			<form action="<c:url value='/workerdata'/>" method="post">    
 			
 				<form  class="login100-form validate-form">
 					<span class="login100-form-title">
-						Member Login
+						Client SignUp
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input">
 						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" name="name" placeholder="Worker Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" >
+						<input type="hidden" name="method"/>					
+						<input class="input100" type="number" name="Age" placeholder="Age" min="18" max = "70">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="Email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 					
-					<div class="container-login100-form-btn">
-						<Input type="submit"  value = "Login" class="login100-form-btn" name="done">
-							</Input>
-					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="WorkerType" placeholder="WorkerType">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
 					</div>
 
-					<div class="text-center p-t-136">
-						<a class="txt2" href="createclientaccount.jsp">
-							Create your Account As Client
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a><br>
-						<a class="txt2" href="createworkaccount.jsp">
-							Create your Account As Worker
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="Skill" placeholder="Skill">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="salaryrange" placeholder="salaryrange">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="Review" placeholder="Review">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+							
+					
+					<div class="container-login100-form-btn">
+						<Input type="submit"  value = "Signup" class="login100-form-btn" name="done">
+					</Input>
 					</div>
 					
 							

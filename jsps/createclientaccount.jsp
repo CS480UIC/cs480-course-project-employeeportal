@@ -34,7 +34,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 			
-			<form action="<c:url value='/CreateDatabase'/>" method="post">    
+			<form action="<c:url value='/createaccounts'/>" method="post">    
 			
 				<form  class="login100-form validate-form">
 					<span class="login100-form-title">
@@ -43,7 +43,7 @@
 
 					<div class="wrap-input100 validate-input">
 						<input type="hidden" name="method"/>					
-						<input class="input100" type="text" name="email" placeholder="Name">
+						<input class="input100" type="text" name="name" placeholder="Name">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>

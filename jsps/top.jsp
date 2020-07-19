@@ -36,10 +36,9 @@
 	<c:choose>
 		<c:when test="${empty sessionScope.session_user }">
 			<a href="<c:url value='/jsps/Init.jsp'/>" target="_parent">Login</a> |&nbsp;		
-			<a href="<c:url value='/jsps/signup.jsp'/>" target="_parent">Signup</a> |&nbsp;
-			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">WorkersList</a> |&nbsp;		
-			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">WorkersHistory</a> |&nbsp;
-			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">UpdateAccounts</a> ;		
+			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">WorkersList</a> |&nbsp;
+			<a href="<c:url value='/jsps/Deleteaccount.jsp'/>" target="_parent">DeleteAccount</a> |&nbsp;		
+			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">UpdateAccounts</a> 		
 								
 								
 
